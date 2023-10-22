@@ -28,7 +28,7 @@ public class CarController {
 
 
     @GetMapping("/{carId}")
-    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable int carId){
+    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable("cars") String carId){
         try {
             int carIdInt = Integer.parseInt(String.valueOf(carId));
             return carService.getOneCarsByIdApi(carIdInt);
