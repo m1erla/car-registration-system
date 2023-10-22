@@ -27,7 +27,7 @@
 ---
 
 ### Reference Documentation
-* [Github](https://github.com/m1erla/PatikaSpringBoot)
+* [Github](https://github.com/m1erla)
 * [H2 Console](http://localhost:8080/h2-console/l)
 * [Swagger](http://localhost:8080/swagger-ui/index.html#/)
  
