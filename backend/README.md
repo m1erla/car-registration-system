@@ -1,7 +1,7 @@
-# Patika
+# Backend
 - Java 17
 - Spring Framework
-- Spring Boot
+- Spring Boot 2.7.16
 - Spring MVC
 - Spring Data
 - Spring Rest(http status)
@@ -16,7 +16,7 @@
  
 ---
 
-## Lesson Steps
+## Project Structure
 > Spring Framework
 > Spring Boot
 > Spring MVC
