@@ -149,7 +149,7 @@ function TableCar() {
                                 localStorage.getItem("currentUserId")
                               ) && (
                               <div>
-                                <Link to={`/editcar/${car.id}`}>
+                                <Link to={`/editCar/${car.id}`}>
                                   <IconButton>
                                     {" "}
                                     <MdModeEditOutline />

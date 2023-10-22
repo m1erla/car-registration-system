@@ -14,11 +14,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/images")
-@AllArgsConstructor
 public class ImageController {
 
     private final ImageService imageService;
-
+    public ImageController(ImageService imageCarService) {
+        this.imageService = imageCarService;
+    }
     @GetMapping
     public DataResult<List<ImageResponse>> getAllOrByCarId(@RequestParam Optional<Integer> carId){
         return imageService.getAllOrByCarId(carId);

@@ -36,20 +36,20 @@ public class ImageManager implements ImageService {
             images=imageRepository.findByCarId(carId.get());
             return new
                     SuccessDataResult<List<ImageResponse>>
-                    ("Data getirildi",  images.stream().map(imageCar -> new ImageResponse(imageCar)).collect(Collectors.toList()));
+                    ("Data brought",  images.stream().map(imageCar -> new ImageResponse(imageCar)).collect(Collectors.toList()));
         }
         images=imageRepository.findAll();
         return new SuccessDataResult<List<ImageResponse>>
-                ("Data getirildi",images.stream().map(imageCar -> new ImageResponse(imageCar)).collect(Collectors.toList()));
+                ("Data brought",images.stream().map(imageCar -> new ImageResponse(imageCar)).collect(Collectors.toList()));
     }
 
     @Override
     public DataResult<ImageResponse> getImageById(int imageId) {
         Optional<ImageCar> image=imageRepository.findById(imageId);
         if (image.isPresent()){
-            return new SuccessDataResult<ImageResponse>("Data Getirildi",new ImageResponse(image.get()));
+            return new SuccessDataResult<ImageResponse>("Data brought",new ImageResponse(image.get()));
         }
-        return new ErrorDataResult<ImageResponse>("Data Getirilemedi",null);
+        return new ErrorDataResult<ImageResponse>("Failed to Fetch Data",null);
     }
 
     @Override
@@ -60,24 +60,24 @@ public class ImageManager implements ImageService {
             imageCar.setUrl(imageAddRequest.getUrl());
             imageCar.setCar(isHaveCar);
             imageRepository.save(imageCar);
-            return new SuccessDataResult<ImageResponse>("Resim Eklendi",new ImageResponse(imageCar));
+            return new SuccessDataResult<ImageResponse>("Image added",new ImageResponse(imageCar));
         }
 
-        return new ErrorDataResult<ImageResponse>("Resim eklenemedi",null);
+        return new ErrorDataResult<ImageResponse>("Failed to add image",null);
     }
     public DataResult<ImageCar> getImageByIdHelp(int imageId) {
         Optional<ImageCar> image=imageRepository.findById(imageId);
         if (image.isPresent()){
-            return new SuccessDataResult<ImageCar>("Data Getirildi",image.get());
+            return new SuccessDataResult<ImageCar>("Data brought",image.get());
         }
-        return new ErrorDataResult<ImageCar>("Data Getirilemedi",null);
+        return new ErrorDataResult<ImageCar>("Failed to fetch data",null);
     }
     @Override
     public DataResult<Integer> removeOneImage(int imageId) {
         ImageCar imageCar=getImageByIdHelp(imageId).getData();
         if (imageCar!=null){
-            return new SuccessDataResult<>("Resim silindi...",imageId);
+            return new SuccessDataResult<>("Image deleted",imageId);
         }
-        return new ErrorDataResult<>("Silinecek resim yok",null);
+        return new ErrorDataResult<>("There are no images to delete",null);
     }
 }

@@ -51,7 +51,7 @@ public class AuthController {
     public AuthResponse register(@RequestBody CreateUserRequest registerRequest){
         AuthResponse authResponse=new AuthResponse();
         if(userService.getByUserName(registerRequest.getUserName()).getData() != null) {
-            authResponse.setMessage("Böyle bir kullanıcı zaten var");
+            authResponse.setMessage("Such a user already exists");
             return authResponse;
         }
         CreateUserRequest user = new CreateUserRequest();
@@ -60,7 +60,7 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         userService.createUser(user);
         User getUser=userService.getByUserName(user.getUserName()).getData();
-        authResponse.setMessage("Kullanıcı Başarıyla Oluşturuldu");
+        authResponse.setMessage("User Created Successfully");
         authResponse.setUserName(getUser.getUserName());
         authResponse.setUserId(getUser.getId());
 

@@ -12,7 +12,6 @@ import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -23,7 +22,7 @@ import { InputGroup, InputRightElement, Button } from "@chakra-ui/react";
 import { changePassword } from "../api";
 import { changePasswordValidation } from "../components/validation/Validation";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { InputLabel } from "@mui/material";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
@@ -36,6 +35,8 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { HiOutlineLogout } from "react-icons/hi";
+import LoginIcon from "@mui/icons-material/Login";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 export function PasswordInput() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -203,16 +204,29 @@ export function PasswordInput() {
           <div style={{ marginTop: "10px", textAlign: "end", width: "500px" }}>
             <Button
               onClick={() => navigate("/dashboard")}
-              variant="text"
+              bg="red.500"
+              variant="contained"
               style={{
-                marginRight: "15px",
+                borderRadius: "25px",
+                padding: "10px",
+                width: "20%",
               }}
-              colorScheme="messenger"
+              sx={{ mr: 4, textColor: "white" }}
             >
               Cancel
             </Button>
 
-            <Button onClick={formik.handleSubmit} colorScheme="messenger">
+            <Button
+              onClick={formik.handleSubmit}
+              bg="blue.500"
+              variant="contained"
+              style={{
+                borderRadius: "25px",
+                padding: "10px",
+                width: "20%",
+              }}
+              sx={{ textColor: "white" }}
+            >
               Save
             </Button>
           </div>
@@ -220,7 +234,7 @@ export function PasswordInput() {
         {changePasswordMessage ? (
           <div
             style={
-              changePasswordMessage.message.includes("yanlış")
+              changePasswordMessage.message.includes("wrong")
                 ? { color: "red", textAlign: "center", marginTop: "50px" }
                 : { color: "green", textAlign: "center", marginTop: "50px" }
             }
@@ -301,7 +315,7 @@ export default function Dashboard() {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/:carId");
+    navigate("/editCar/");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -309,7 +323,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail/:carId");
+    navigate("/cardetail/");
     navigate(0);
   };
 
@@ -391,7 +405,7 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <BarChartIcon />
                   </ListItemIcon>
-                  <Link onClick={handleEditCar} to="/editCar/:carId">
+                  <Link onClick={handleEditCar} to="/editCar/">
                     <ListItemText primary="Edit Car" />
                   </Link>
                 </ListItemButton>
@@ -399,7 +413,7 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <AssignmentIcon />
                   </ListItemIcon>
-                  <Link onClick={handleCarDetail} to="/cardetail/:carId">
+                  <Link onClick={handleCarDetail} to="/cardetail/">
                     <ListItemText primary="Car List" />
                   </Link>
                 </ListItemButton>
@@ -432,7 +446,7 @@ export default function Dashboard() {
               <>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <LoginIcon />
                   </ListItemIcon>
                   <Link to="/signin">
                     <ListItemText primary="Login" />
@@ -440,7 +454,7 @@ export default function Dashboard() {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <AppRegistrationIcon />
                   </ListItemIcon>
                   <Link to="/register">
                     <ListItemText primary="Register" />

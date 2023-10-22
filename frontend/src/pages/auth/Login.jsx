@@ -48,6 +48,8 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { HiOutlineLogout } from "react-icons/hi";
+import LoginIcon from "@mui/icons-material/Login";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 export function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -111,7 +113,7 @@ export function Login() {
               Successful Login. You will be redirected after 5 seconds...
             </h6>
           ) : (
-            ""
+            " "
           )}
         </section>
 
@@ -237,7 +239,7 @@ export default function Dashboard() {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/:carId");
+    navigate("/editCar/");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -245,7 +247,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail/:carId");
+    navigate("/cardetail/");
     navigate(0);
   };
 
@@ -392,7 +394,7 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <BarChartIcon />
                   </ListItemIcon>
-                  <Link onClick={handleEditCar} to="/editCar/:carId">
+                  <Link onClick={handleEditCar} to="/editCar">
                     <ListItemText primary="Edit Car" />
                   </Link>
                 </ListItemButton>
@@ -400,7 +402,7 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <AssignmentIcon />
                   </ListItemIcon>
-                  <Link onClick={handleCarDetail} to="/cardetail/:carId">
+                  <Link onClick={handleCarDetail} to="/cardetail">
                     <ListItemText primary="Car Detail" />
                   </Link>
                 </ListItemButton>
@@ -433,7 +435,7 @@ export default function Dashboard() {
               <>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <LoginIcon />
                   </ListItemIcon>
                   <Link to="/signin" onClick={handleLogin}>
                     <ListItemText primary="Login" />
@@ -441,7 +443,7 @@ export default function Dashboard() {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <AppRegistrationIcon />
                   </ListItemIcon>
                   <Link to="/register" onClick={handleRegister}>
                     <ListItemText primary="Register" />

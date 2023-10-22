@@ -17,7 +17,7 @@ export const imageSlice = createSlice({
     },
     [axiosGetImage.fulfilled]: (state, action) => {
       state.imageId = action.payload;
-      state.imageIdStatus = "succes";
+      state.imageIdStatus = "success";
     },
     [axiosGetImage.rejected]: (state, action) => {
       state.imageIdStatus = "failed";
@@ -30,7 +30,7 @@ export const imageSlice = createSlice({
     },
     [addImage.fulfilled]: (state, action) => {
       state.imageId.push(action.payload);
-      state.imageIdStatus = "succes";
+      state.imageIdStatus = "success";
     },
     [addImage.rejected]: (state, action) => {
       state.imageIdStatus = "failed";

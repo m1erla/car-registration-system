@@ -14,21 +14,30 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/cars")
-@AllArgsConstructor
 public class CarController {
 
     private final CarService carService;
-
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
     @GetMapping
     public DataResult<List<GetAllCarsResponse>> getAllCarsOrFindByUserIdOrBrandOrModel
-            (@RequestParam Optional<Integer> userId, @RequestParam Optional<String> brand, @RequestParam Optional<String> model){
-        return carService.getAllCarsOrFindByUserIdOrBrandOrModel(userId,model,brand);
+            (@RequestParam Optional<Integer> userId, @RequestParam Optional<String> model, @RequestParam Optional<String> brand){
+        return carService.getAllCarsOrfindByUserIdOrBrandOrModel(userId, model, brand);
     }
 
 
     @GetMapping("/{carId}")
     public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable int carId){
-        return carService.getOneCarsByIdApi(carId);
+        try {
+            int carIdInt = Integer.parseInt(String.valueOf(carId));
+            return carService.getOneCarsByIdApi(carIdInt);
+        } catch (NumberFormatException e) {
+            // Handle the case where carId is not a valid integer
+            // You can return an error response or handle it based on your application's logic
+            e.printStackTrace();  // Log the exception for debugging purposes
+            return new DataResult<>(false, "Error: Invalid carId", null);  // Adjust the response as needed
+        }
     }
 
     @PostMapping
@@ -41,7 +50,7 @@ public class CarController {
         return carService.updateOneCar(carId,UpdateCarRequest);
     }
 
-    @DeleteMapping("{carId}")
+    @DeleteMapping("/{carId}")
     public DataResult<Integer> removeById(@PathVariable int carId){
         return carService.removeById(carId);
     }

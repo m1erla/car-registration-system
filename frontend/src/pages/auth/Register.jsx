@@ -36,6 +36,8 @@ import { HiOutlineLogout } from "react-icons/hi";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import LoginIcon from "@mui/icons-material/Login";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 export function Register() {
   const registerInfo = useSelector((state) => state.user.registerUser);
 
@@ -266,7 +268,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleEditCar = () => {
-    navigate("/editCar/:carId");
+    navigate("/editCar/");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -274,7 +276,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail/:carId");
+    navigate("/cardetail/");
     navigate(0);
   };
 
@@ -425,7 +427,7 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <BarChartIcon />
                   </ListItemIcon>
-                  <Link onClick={handleEditCar} to="/editCar/:carId">
+                  <Link onClick={handleEditCar} to="/editCar">
                     <ListItemText primary="Edit Car" />
                   </Link>
                 </ListItemButton>
@@ -433,7 +435,7 @@ export default function Dashboard() {
                   <ListItemIcon>
                     <AssignmentIcon />
                   </ListItemIcon>
-                  <Link onClick={handleCarDetail} to="/cardetail/:carId">
+                  <Link onClick={handleCarDetail} to="/cardetail">
                     <ListItemText primary="Car Detail" />
                   </Link>
                 </ListItemButton>
@@ -466,7 +468,7 @@ export default function Dashboard() {
               <>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <LoginIcon />
                   </ListItemIcon>
                   <Link to="/signin" onClick={handleLogin}>
                     <ListItemText primary="Login" />
@@ -474,7 +476,7 @@ export default function Dashboard() {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <AppRegistrationIcon />
                   </ListItemIcon>
                   <Link to="/register" onClick={handleRegister}>
                     <ListItemText primary="Register" />

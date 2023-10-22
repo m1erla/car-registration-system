@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CarService {
-    DataResult<List<GetAllCarsResponse>> getAllCarsOrFindByUserIdOrBrandOrModel(Optional<Integer> userId, Optional<String> model, Optional<String> brand);
+    DataResult<List<GetAllCarsResponse>> getAllCarsOrfindByUserIdOrBrandOrModel(Optional<Integer> userId, Optional<String> model, Optional<String> brand);
 
     DataResult<Car> getOneCarsByIdHelp(int carId);
     DataResult<GetAllCarsResponse> getOneCarsByIdApi(int carId);

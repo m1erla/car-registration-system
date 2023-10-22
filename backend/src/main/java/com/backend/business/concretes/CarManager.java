@@ -36,13 +36,13 @@ public class CarManager implements CarService {
         this.imageService = imageService;
     }
     @Override
-    public DataResult<List<GetAllCarsResponse>> getAllCarsOrFindByUserIdOrBrandOrModel(Optional<Integer> userId, Optional<String> model, Optional<String> brand) {
+    public DataResult<List<GetAllCarsResponse>> getAllCarsOrfindByUserIdOrBrandOrModel(Optional<Integer> userId, Optional<String> model, Optional<String> brand) {
         List<Car> car;
         if (userId.isPresent()){
             car=carRepository.findByUserId(userId);
 
             return new SuccessDataResult<List<GetAllCarsResponse>>
-                    ("Kullanıcıya ait Araçlar getirildi...",
+                    ("User's Cars have been brought",
                             car.stream().map(car1 -> {
                                 List<ImageResponse> images= imageService.getAllOrByCarId(Optional.of(car1.getId())).getData();
                                 return new GetAllCarsResponse(car1,images);
@@ -51,7 +51,7 @@ public class CarManager implements CarService {
             car=carRepository.findByModel(model);
             return new
                     SuccessDataResult<List<GetAllCarsResponse>>
-                    (model.get()+" model tipi araçlar getirildi...",car.stream().map(car1 -> {
+                    (model.get()+" Model type cars were brought",car.stream().map(car1 -> {
                         List<ImageResponse> images= imageService.getAllOrByCarId(Optional.of(car1.getId())).getData();
                         return new GetAllCarsResponse(car1, images);
                     }).collect(Collectors.toList()));
@@ -60,7 +60,7 @@ public class CarManager implements CarService {
             car=carRepository.findByBrand(brand);
             return new
                     SuccessDataResult<List<GetAllCarsResponse>>
-                    (brand.get()+" marka araçlar getirildi...",car.stream().map(car1 -> {
+                    (brand.get()+" Brand cars were brought...",car.stream().map(car1 -> {
                         List<ImageResponse> images= imageService.getAllOrByCarId(Optional.of(car1.getId())).getData();
                         return new GetAllCarsResponse(car1, images);
                     }).collect(Collectors.toList()));
@@ -70,14 +70,14 @@ public class CarManager implements CarService {
             car=carRepository.findByBrandAndModel(brand, model);
             return new
                     SuccessDataResult<List<GetAllCarsResponse>>
-                    (brand.get()+" marka araç ve"+model.get()+"model tipi araçlar getirildi...",car.stream().map(car1 -> {
+                    (brand.get()+" Brand car and "+model.get()+" model type cars were brought",car.stream().map(car1 -> {
                         List<ImageResponse> images= imageService.getAllOrByCarId(Optional.of(car1.getId())).getData();
                         return new GetAllCarsResponse(car1,images);
                     }).collect(Collectors.toList()));
         }
         car=carRepository.findAll();
         return new
-                SuccessDataResult<List<GetAllCarsResponse>>("Tüm Araçlar getirildi...",car.stream().map(car1 -> {
+                SuccessDataResult<List<GetAllCarsResponse>>("All cars brought",car.stream().map(car1 -> {
             List<ImageResponse> images= imageService.getAllOrByCarId(Optional.of(car1.getId())).getData();
             return new GetAllCarsResponse(car1, images);
         }).collect(Collectors.toList()));
@@ -87,9 +87,9 @@ public class CarManager implements CarService {
     public DataResult<Car> getOneCarsByIdHelp(int carId) {
         Optional<Car> haveIsCar=carRepository.findById(carId);
         if (haveIsCar.isPresent()){
-            return new SuccessDataResult<Car>("Araç Getirildi...",haveIsCar.get());
+            return new SuccessDataResult<Car>("Car brought",haveIsCar.get());
         }
-        return new ErrorDataResult<Car>("Böyle bir araç bulunmamakta... ",null);
+        return new ErrorDataResult<Car>("Car not found! ",null);
     }
 
     @Override
@@ -97,16 +97,16 @@ public class CarManager implements CarService {
         Optional<Car> haveIsCar=carRepository.findById(carId);
         List<ImageResponse> images= imageService.getAllOrByCarId(Optional.of(haveIsCar.get().getId())).getData();
         if (haveIsCar.isPresent()){
-            return new SuccessDataResult<GetAllCarsResponse>("Araç Getirildi...",new GetAllCarsResponse(haveIsCar.get(),images));
+            return new SuccessDataResult<GetAllCarsResponse>("Car brought",new GetAllCarsResponse(haveIsCar.get(),images));
         }
-        return new ErrorDataResult<GetAllCarsResponse>("Böyle bir araç bulunmamakta... ",null);
+        return new ErrorDataResult<GetAllCarsResponse>("Car not found ",null);
     }
 
     @Override
     public DataResult<Car> createOneCar(CreateCarRequest createCarRequest) {
         User haveIsUser= userService.getById(createCarRequest.getUserId()).getData();
         if (haveIsUser==null){
-            return new ErrorDataResult<Car>("Araç Eklenemedi...!",null);
+            return new ErrorDataResult<Car>("Failed to add car!",null);
         }
 
         Car toSaveCar=new Car();
@@ -119,7 +119,7 @@ public class CarManager implements CarService {
         toSaveCar.setCreatedAt(new Date());
         carRepository.save(toSaveCar);
 
-        return new SuccessDataResult<Car>("Araç Eklendi...",toSaveCar);
+        return new SuccessDataResult<Car>("Car added",toSaveCar);
     }
 
     @Override
@@ -133,9 +133,9 @@ public class CarManager implements CarService {
             toUpdateCar.setModel(updateCarRequest.getModel());
             toUpdateCar.setModelYear(updateCarRequest.getModelYear());
             carRepository.save(toUpdateCar);
-            return new SuccessDataResult<Car>("Araç Güncellendi...",toUpdateCar);
+            return new SuccessDataResult<Car>("Car updated",toUpdateCar);
         }
-        return new ErrorDataResult<Car>("Araç bulunamadı",null);
+        return new ErrorDataResult<Car>("Car not found...",null);
     }
 
     @Override
@@ -143,9 +143,9 @@ public class CarManager implements CarService {
         Optional<Car> haveIsCar=carRepository.findById(carId);
         if (haveIsCar.isPresent()){
             carRepository.deleteById(carId);
-            return new SuccessDataResult<Integer>("Araç silindi...",carId);
+            return new SuccessDataResult<Integer>("Car deleted!",carId);
         }
-        return new ErrorDataResult<Integer>("Araç bulunamadı...",null);
+        return new ErrorDataResult<Integer>("Car not found...",null);
     }
 
     public  String turkishToEnglishConverter(String text)

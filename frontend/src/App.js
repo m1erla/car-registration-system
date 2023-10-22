@@ -10,18 +10,17 @@ import MyCarList from "./pages/CarList";
 import Protected from "./components/Protected";
 import EditCar from "./pages/EditCar";
 import CarDetail from "./pages/CarDetail";
-import Home from "./pages/Home";
+import HomePage from "./pages/Home";
 import AddNewCar from "./pages/AddNewCar";
 import Bar from "./components/Bar";
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index path="/" element={<Home />} />
+        <Route index path="/" element={<HomePage />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/carlist" element={<MyCarList />} />
         <Route element={<Protected />} />
-        <Route path="/datagrid" element={<FullFeaturedCrudGrid />} />
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/editCar/:carId" element={<EditCar />} />
         <Route path="/cardetail/:carId" element={<CarDetail />} />

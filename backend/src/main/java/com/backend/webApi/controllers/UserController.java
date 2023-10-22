@@ -14,11 +14,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@AllArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
     @GetMapping()
     public DataResult<List<User>> getAllUsers(){
         return userService.getAllUser();
