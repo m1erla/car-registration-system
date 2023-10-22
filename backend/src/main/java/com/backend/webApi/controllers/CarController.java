@@ -1,0 +1,48 @@
+package com.backend.webApi.controllers;
+
+import com.backend.business.abstracts.CarService;
+import com.backend.business.requests.CreateCarRequest;
+import com.backend.business.requests.UpdateCarRequest;
+import com.backend.business.responses.GetAllCarsResponse;
+import com.backend.core.utilities.exceptions.DataResult;
+import com.backend.entities.concretes.Car;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/cars")
+@AllArgsConstructor
+public class CarController {
+
+    private final CarService carService;
+
+    @GetMapping
+    public DataResult<List<GetAllCarsResponse>> getAllCarsOrFindByUserIdOrBrandOrModel
+            (@RequestParam Optional<Integer> userId, @RequestParam Optional<String> brand, @RequestParam Optional<String> model){
+        return carService.getAllCarsOrFindByUserIdOrBrandOrModel(userId,model,brand);
+    }
+
+
+    @GetMapping("/{carId}")
+    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable int carId){
+        return carService.getOneCarsByIdApi(carId);
+    }
+
+    @PostMapping
+    public DataResult<Car> createOneCar(@RequestBody CreateCarRequest createCarRequest){
+        return carService.createOneCar(createCarRequest);
+    }
+
+    @PutMapping("/{carId}")
+    public DataResult<Car> updateOneCar(@PathVariable int carId,@RequestBody UpdateCarRequest UpdateCarRequest){
+        return carService.updateOneCar(carId,UpdateCarRequest);
+    }
+
+    @DeleteMapping("{carId}")
+    public DataResult<Integer> removeById(@PathVariable int carId){
+        return carService.removeById(carId);
+    }
+}
