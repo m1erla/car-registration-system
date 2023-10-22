@@ -28,16 +28,8 @@ public class CarController {
 
 
     @GetMapping("/{carId}")
-    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable("cars") String carId){
-        try {
-            int carIdInt = Integer.parseInt(String.valueOf(carId));
-            return carService.getOneCarsByIdApi(carIdInt);
-        } catch (NumberFormatException e) {
-            // Handle the case where carId is not a valid integer
-            // You can return an error response or handle it based on your application's logic
-            e.printStackTrace();  // Log the exception for debugging purposes
-            return new DataResult<>(false, "Error: Invalid carId", null);  // Adjust the response as needed
-        }
+    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable int carId){
+            return carService.getOneCarsByIdApi(carId);
     }
 
     @PostMapping

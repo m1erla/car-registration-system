@@ -34,6 +34,11 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import { HiOutlineLogout } from "react-icons/hi";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import LogoutIcon from "@mui/icons-material/Logout";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import AddIcon from "@mui/icons-material/Add";
 export function CarDetail() {
   const [show, setShow] = React.useState(false);
 
@@ -242,7 +247,7 @@ export default function Dashboard() {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/");
+    navigate("/editCar/:carId");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -250,7 +255,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail/");
+    navigate("/cardetail/:carId");
     navigate(0);
   };
 
@@ -322,7 +327,7 @@ export default function Dashboard() {
               <>
                 <ListItemButton>
                   <ListItemIcon>
-                    <LayersIcon />
+                    <ManageAccountsIcon />
                   </ListItemIcon>
                   <Link onClick={handleChangePassword} to="/changepassword">
                     <ListItemText primary="Change Password" />
@@ -330,7 +335,7 @@ export default function Dashboard() {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <BarChartIcon />
+                    <EditNoteIcon />
                   </ListItemIcon>
                   <Link onClick={handleEditCar} to="/editCar">
                     <ListItemText primary="Edit Car" />
@@ -338,15 +343,15 @@ export default function Dashboard() {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <FormatListBulletedIcon />
                   </ListItemIcon>
-                  <Link onClick={handleCarDetail} to="/cardetail">
+                  <Link onClick={handleCarDetail} to="/carlist">
                     <ListItemText primary="Car List" />
                   </Link>
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <AddIcon />
                   </ListItemIcon>
                   <Link onClick={handleAddNewCar} to="/addnewcar">
                     <ListItemText primary="Add a New Car" />
@@ -355,7 +360,7 @@ export default function Dashboard() {
                 <ListItemButton>
                   <ListItemIcon>
                     <IconButton onClick={() => logout()}>
-                      <HiOutlineLogout />
+                      <LogoutIcon sx={{ ml: -0.5 }} />
                     </IconButton>
                   </ListItemIcon>
                   <ListItemText primary="Logout" />

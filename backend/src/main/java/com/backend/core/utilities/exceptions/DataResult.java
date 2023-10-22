@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
+
 public class DataResult<T> extends Result{
 
     private T data;
@@ -17,6 +14,8 @@ public class DataResult<T> extends Result{
         super(success, message);
         this.data = data;
     }
-
+    public T getData() {
+        return this.data;
+    }
 
 }

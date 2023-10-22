@@ -43,6 +43,11 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import LogoutIcon from "@mui/icons-material/Logout";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import AddIcon from "@mui/icons-material/Add";
 const brand = [
   "BMW",
   "Mercedes",
@@ -370,11 +375,12 @@ export function EditCar() {
 
                   <Button
                     onClick={handleSubmit}
+                    bg="blue.500"
                     variant="contained"
                     style={{
-                      background:
-                        "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
-                      color: "white",
+                      borderRadius: "25px",
+                      padding: "10px",
+                      width: "25%",
                     }}
                   >
                     Save
@@ -455,7 +461,7 @@ export default function Dashboard() {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/");
+    navigate("/editCar/:carId");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -463,7 +469,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail/");
+    navigate("/carlist");
     navigate(0);
   };
 
@@ -535,7 +541,7 @@ export default function Dashboard() {
               <>
                 <ListItemButton>
                   <ListItemIcon>
-                    <LayersIcon />
+                    <ManageAccountsIcon />
                   </ListItemIcon>
                   <Link onClick={handleChangePassword} to="/changepassword">
                     <ListItemText primary="Change Password" />
@@ -543,23 +549,23 @@ export default function Dashboard() {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <BarChartIcon />
+                    <EditNoteIcon />
                   </ListItemIcon>
-                  <Link onClick={handleEditCar} to="/editCar/">
+                  <Link onClick={handleEditCar} to="/editCar">
                     <ListItemText primary="Edit Car" />
                   </Link>
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <FormatListBulletedIcon />
                   </ListItemIcon>
-                  <Link onClick={handleCarDetail} to="/cardetail/">
+                  <Link onClick={handleCarDetail} to="/carlist">
                     <ListItemText primary="Car List" />
                   </Link>
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <AddIcon />
                   </ListItemIcon>
                   <Link onClick={handleAddNewCar} to="/addnewcar">
                     <ListItemText primary="Add a New Car" />
@@ -568,7 +574,7 @@ export default function Dashboard() {
                 <ListItemButton>
                   <ListItemIcon>
                     <IconButton onClick={() => logout()}>
-                      <HiOutlineLogout />
+                      <LogoutIcon sx={{ ml: -0.5 }} />
                     </IconButton>
                   </ListItemIcon>
                   <ListItemText primary="Logout" />

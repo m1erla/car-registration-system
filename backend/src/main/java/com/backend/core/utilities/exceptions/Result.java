@@ -5,19 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
+
 public class Result {
 
-    @Setter
+
     private boolean success;
 
-    @Setter
+
     private String message;
 
+    public Result(boolean success, String message) {
+        this.success = success;
+        this.message = message;
+    }
 
+    public boolean isSuccess() {
+        return this.success;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
 
 
 }
