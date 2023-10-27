@@ -74,14 +74,8 @@
 
 
 
-## Docker Deployment
+## Postman
 ```sh
-1.ADIM
-$     ./mvnw clean package -DskipTests
-
-2.ADIM
-$    docker-compose up
-$    docker ps
 
 
 ######POSTMAN###########
