@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Modal, Space, Input } from "antd";
-import Defaultcar from "../helper/defaultcar1.jpg";
+import Defaultcar from "../helper/default-car.jpg";
 import { MdOutlineAddAPhoto } from "react-icons/md";
 import { IconButton } from "@mui/material";
 import ImageGallery from "react-image-gallery";
@@ -24,14 +24,7 @@ import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import { HiOutlineLogout } from "react-icons/hi";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import EditNoteIcon from "@mui/icons-material/EditNote";
@@ -124,7 +117,10 @@ export function CarDetail() {
           )}
         </section>
         <section>
-          <Card title={"Car Information Card"} style={{ width: "500px" }}>
+          <Card
+            title={"Car Information Card"}
+            style={{ width: "500px", height: "375px" }}
+          >
             <Card
               style={{
                 display: "flex",
