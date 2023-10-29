@@ -10,9 +10,9 @@ Patika bootcamp full stack project. In this porject you can able to register and
 ![login-footer-ss](frontend/public/login-footer.png)
 ## Car Detail Page
 ![car-detail-ss](frontend/public/car-detail.png)
-## ADd Car Page
+## Add Car Page
 ![add-car-ss](frontend/public/add-car.png)
 ## Edit Car Page
-![edit-car-ss](frontend/public/edit-car.png)
+![edit-car-ss](frontend/public/edit.png)
 ## Change Password Page
-![change-password-ss](frontend/public/change-password.png)
+![change-password-ss](frontend/public/change.png)
