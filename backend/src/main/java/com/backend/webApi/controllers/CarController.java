@@ -42,7 +42,7 @@ public class CarController {
         return carService.updateOneCar(carId,UpdateCarRequest);
     }
 
-    @DeleteMapping("/{carId}")
+    @DeleteMapping("{carId}")
     public DataResult<Integer> removeById(@PathVariable int carId){
         return carService.removeById(carId);
     }

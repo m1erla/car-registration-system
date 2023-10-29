@@ -461,7 +461,7 @@ export default function Dashboard() {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/:carId");
+    navigate("/editCar");
     navigate(0);
   };
   const handleAddNewCar = () => {

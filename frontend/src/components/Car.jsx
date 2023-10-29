@@ -337,7 +337,7 @@ export default function Dashboard() {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/");
+    navigate("/editCar");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -345,7 +345,7 @@ export default function Dashboard() {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail/");
+    navigate("/cardetail");
     navigate(0);
   };
 

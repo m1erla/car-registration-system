@@ -84,7 +84,7 @@ export const carsSlice = createSlice({
       state.carsError = action.error.message;
     },
 
-    // get by brand and modal
+    // get by brand and model
 
     [getAllByBrandAndModel.pending]: (state, action) => {
       state.carsStatus = "loading";

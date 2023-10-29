@@ -277,10 +277,7 @@ export function HomePage() {
                   width: "100px",
                 }}
               >
-                <Link
-                  to={"/cardetail/:carId/"}
-                  style={{ textDecoration: "none" }}
-                >
+                <Link to={"/carlist"} style={{ textDecoration: "none" }}>
                   <Button
                     style={{
                       display: "flex",
