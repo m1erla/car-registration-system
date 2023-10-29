@@ -73,8 +73,8 @@ export const getAllByBrandAndModel = createAsyncThunk(
 
 export const getCarById = createAsyncThunk(
   "cars/getByCarIdCars",
-  async (carId) => {
-    const data = await axiosIstance.get(`/cars/${carId}`, {
+  async (carsId) => {
+    const data = await axiosIstance.get(`/cars/${carsId}`, {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
@@ -83,8 +83,8 @@ export const getCarById = createAsyncThunk(
   }
 );
 
-export const axiosCarById = async (carId) => {
-  const data = await axiosIstance.get(`/cars/${carId}`, {
+export const axiosCarById = async (carsId) => {
+  const data = await axiosIstance.get(`/cars/${carsId}`, {
     headers: {
       Authorization: localStorage.getItem("token"),
     },
