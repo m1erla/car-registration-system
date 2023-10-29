@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import {
   Button,
@@ -13,20 +13,13 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { validationAddCar } from "../components/validation/Validation";
 import { axiosCarById, updateCar } from "../api";
 import { useQuery } from "@tanstack/react-query";
-import { useDispatch, useSelector } from "react-redux";
-import { useFormik } from "formik";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import { HiOutlineLogout } from "react-icons/hi";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -40,7 +33,6 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import EditNoteIcon from "@mui/icons-material/EditNote";

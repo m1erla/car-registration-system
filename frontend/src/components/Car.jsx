@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  addImage,
-  axiosGetImage,
-  deleteCar,
-  getCarById,
-  getCarByUserId,
-  updateCar,
-} from "../api";
+import { addImage, deleteCar, updateCar } from "../api";
 import { ThemeProvider, createTheme } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { Image, Card, Button, Modal, Space, Input } from "antd";
-import Defaultcar from "../helper/defaultcar1.jpg";
+import { useDispatch } from "react-redux";
+import { Card, Modal, Space, Input } from "antd";
+import Defaultcar from "../helper/default-car.jpg";
 import { MdOutlineAddAPhoto } from "react-icons/md";
-import { IconButton, InputLabel } from "@mui/material";
+import { IconButton } from "@mui/material";
 import ImageGallery from "react-image-gallery";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { ExclamationCircleFilled } from "@ant-design/icons";
@@ -27,7 +20,6 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import { HiOutlineLogout } from "react-icons/hi";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";

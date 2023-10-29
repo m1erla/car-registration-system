@@ -28,25 +28,17 @@ import {
 import { MdFilterAlt } from "react-icons/md";
 import TableCar from "../../components/TableCar";
 import { Link, useNavigate } from "react-router-dom";
-import { HiOutlineLogout } from "react-icons/hi";
 import { BsFillCarFrontFill } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-
 import { filteredData } from "../../redux/cars/carsSlice";
 import { Modal, Space } from "antd";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-import { useFormik } from "formik";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import EditNoteIcon from "@mui/icons-material/EditNote";
@@ -155,7 +147,7 @@ export function HomePage() {
   };
 
   const fetchData = () => {
-    if (brandFiltered == !"" && modalFiltered !== "") {
+    if (brandFiltered === !"" && modalFiltered !== "") {
       dispatch(
         getAllByBrandAndModel({ brand: brandFiltered, model: modalFiltered })
       );

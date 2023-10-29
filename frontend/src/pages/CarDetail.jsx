@@ -33,8 +33,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddIcon from "@mui/icons-material/Add";
 export function CarDetail() {
-  const [show, setShow] = React.useState(false);
-
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modelText, setModelText] = useState("Content of the model");
