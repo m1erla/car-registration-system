@@ -1,25 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import {
   Button,
   Input,
   InputLabel,
   MenuItem,
-  Paper,
   Select,
   ThemeProvider,
   createTheme,
   IconButton,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { validationAddCar } from "../components/validation/Validation";
 import { addCar } from "../api";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
@@ -31,14 +28,10 @@ import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-import { HiOutlineLogout } from "react-icons/hi";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import EditNoteIcon from "@mui/icons-material/EditNote";

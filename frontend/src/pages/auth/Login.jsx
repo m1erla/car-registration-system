@@ -1,24 +1,10 @@
 import React from "react";
-import { Formik, Field, useFormik, Form } from "formik";
+import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import {
-  Box,
-  Checkbox,
-  Flex,
-  Button,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  VStack,
-  extendTheme,
-} from "@chakra-ui/react";
-import { useRef, useState, useEffect } from "react";
-import axios from "axios";
+import { Box, Button } from "@chakra-ui/react";
 import { InputLabel } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { axiosRegister } from "../../api";
-import { validationRegister } from "../../components/validation/Validation";
+import { useDispatch } from "react-redux";
 import { Input, Space } from "antd";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -31,23 +17,13 @@ import MuiDrawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import List from "@mui/material/List";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import CssBaseline from "@mui/material/CssBaseline";
-import Paper from "@mui/material/Paper";
 import { validationLogin } from "../../components/validation/Validation";
 import { loginAuth } from "../../api";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import { HiOutlineLogout } from "react-icons/hi";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import EditNoteIcon from "@mui/icons-material/EditNote";

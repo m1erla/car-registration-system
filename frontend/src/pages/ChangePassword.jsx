@@ -12,13 +12,10 @@ import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import FullFeaturedCrudGrid from "../components/DataGrid";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-import { InputGroup, InputRightElement, Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { changePassword } from "../api";
 import { changePasswordValidation } from "../components/validation/Validation";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,11 +27,7 @@ import { Space, Input } from "antd";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import { HiOutlineLogout } from "react-icons/hi";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import EditNoteIcon from "@mui/icons-material/EditNote";
@@ -43,11 +36,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import AddIcon from "@mui/icons-material/Add";
 export function PasswordInput() {
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-  const changePasswordStatus = useSelector(
-    (state) => state.user.changePasswordStatus
-  );
   const changePasswordMessage = useSelector(
     (state) => state.user.changePasswordMessage
   );

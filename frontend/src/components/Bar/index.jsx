@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../Bar/styles.css";
 import { MdOutlineHome, MdOutlineFolderCopy } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Button } from "antd";
 
 export default function Bar() {
   const navigate = useNavigate();
