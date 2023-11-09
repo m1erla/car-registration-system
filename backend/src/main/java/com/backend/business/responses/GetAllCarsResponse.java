@@ -18,9 +18,9 @@ public class GetAllCarsResponse {
 
     private String model;
 
-    private String modelYear;
+    private String year;
 
-    private String licensePlate;
+    private String plate;
     private Date createdAt;
     private List<ImageResponse> carImages;
 
@@ -31,8 +31,8 @@ public class GetAllCarsResponse {
         this.carName = entity.getCarName();
         this.brand = entity.getBrand();
         this.model = entity.getModel();
-        this.modelYear = entity.getModelYear();
-        this.licensePlate = entity.getLicensePlate();
+        this.year = entity.getYear();
+        this.plate = entity.getPlate();
         this.createdAt = entity.getCreatedAt();
         this.carImages=images;
     }

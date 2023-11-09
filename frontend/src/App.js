@@ -2,8 +2,6 @@ import "./App.css";
 import Register from "./pages/auth/Register";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/Login";
-import FullFeaturedCrudGrid from "./components/DataGrid";
-import Dashboard from "./components/Header/Dashboard";
 import ChangePassword from "./pages/ChangePassword";
 import Footer from "./components/Header/Footer";
 import MyCarList from "./pages/CarList";
@@ -12,10 +10,11 @@ import EditCar from "./pages/EditCar";
 import CarDetail from "./pages/CarDetail";
 import HomePage from "./pages/Home";
 import AddNewCar from "./pages/AddNewCar";
-import Bar from "./components/Bar";
+import Dashboard from "./components/Dashboard";
 function App() {
   return (
     <div className="App">
+      <Dashboard />
       <Routes>
         <Route index path="/" element={<HomePage />} />
         <Route path="/signin" element={<Login />} />

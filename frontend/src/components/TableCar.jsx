@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
-import { IconButton } from "@mui/material";
+import { IconButton, ThemeProvider, createTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteCar, getAllCars } from "../api";
@@ -50,14 +50,14 @@ function TableCar() {
         format: (value) => value.toLocaleString("en-US"),
       },
       {
-        id: "modelYear",
+        id: "year",
         label: "Model Year",
         minWidth: 170,
         align: "right",
         format: (value) => value.toLocaleString("en-US"),
       },
       {
-        id: "licensePlate",
+        id: "plate",
         label: "License Plate",
         minWidth: 170,
         align: "right",
@@ -90,100 +90,105 @@ function TableCar() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const defaultTheme = createTheme();
 
   return (
-    <div>
-      <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <TableContainer sx={{ maxHeight: 380 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {carsAll
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((car) => {
-                  return (
-                    <TableRow
-                      style={{ width: "500px" }}
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={car.id}
+    <ThemeProvider theme={defaultTheme}>
+      <div>
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+          <TableContainer sx={{ maxHeight: 380 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  {columns.map((column) => (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{ minWidth: column.minWidth }}
                     >
-                      {columns.map((column) => {
-                        const value = car[column.id];
-                        return (
-                          <>
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          </>
-                        );
-                      })}
-                      <Link
-                        to={`/cardetail/${car.id}`}
-                        style={{ width: "15px", height: "15px" }}
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {carsAll
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((car) => {
+                    return (
+                      <TableRow
+                        style={{ width: "500px" }}
+                        hover
+                        role="checkbox"
+                        tabIndex={-1}
+                        key={car.id}
                       >
-                        <IconButton style={{ fontSize: "18px" }}>
-                          <AiTwotoneEye />
-                          Review
-                        </IconButton>
-                      </Link>
-                      <div>
-                        {localStorage.getItem("token")
-                          ? car.userId ===
-                              parseInt(
-                                localStorage.getItem("currentUserId")
-                              ) && (
-                              <div>
-                                <Link to={`/editCar/${car.id}`}>
-                                  <IconButton>
-                                    {" "}
-                                    <MdModeEditOutline />
-                                  </IconButton>
-                                </Link>
-                                <Link>
-                                  <IconButton
-                                    onClick={() => dispatch(deleteCar(car.id))}
-                                  >
-                                    {" "}
-                                    <MdDelete />
-                                  </IconButton>
-                                </Link>
-                              </div>
-                            )
-                          : ""}
-                      </div>
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-    </div>
+                        {columns.map((column) => {
+                          const value = car[column.id];
+                          return (
+                            <>
+                              <TableCell key={column.id} align={column.align}>
+                                {column.format && typeof value === "number"
+                                  ? column.format(value)
+                                  : value}
+                              </TableCell>
+                            </>
+                          );
+                        })}
+                        <Link
+                          to={`/cardetail/${car.id}`}
+                          style={{ width: "15px", height: "15px" }}
+                        >
+                          <IconButton style={{ fontSize: "18px" }}>
+                            <AiTwotoneEye />
+                            Review
+                          </IconButton>
+                        </Link>
+                        <div>
+                          {localStorage.getItem("token")
+                            ? car.userId ===
+                                parseInt(
+                                  localStorage.getItem("currentUserId")
+                                ) && (
+                                <div>
+                                  <Link to={`/editCar/${car.id}`}>
+                                    <IconButton>
+                                      {" "}
+                                      <MdModeEditOutline />
+                                    </IconButton>
+                                  </Link>
+                                  <Link>
+                                    <IconButton
+                                      onClick={() =>
+                                        dispatch(deleteCar(car.id))
+                                      }
+                                    >
+                                      {" "}
+                                      <MdDelete />
+                                    </IconButton>
+                                  </Link>
+                                </div>
+                              )
+                            : ""}
+                        </div>
+                      </TableRow>
+                    );
+                  })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
+      </div>
+    </ThemeProvider>
   );
 }
 

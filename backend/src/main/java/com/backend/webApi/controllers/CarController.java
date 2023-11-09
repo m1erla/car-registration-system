@@ -21,7 +21,7 @@ public class CarController {
         this.carService = carService;
     }
     @GetMapping
-    public DataResult<List<GetAllCarsResponse>> getAllCarsOrFindByUserIdOrBrandOrModel
+    public DataResult<List<GetAllCarsResponse>> getAllCarsOrfindByUserIdOrBrandOrModel
             (@RequestParam Optional<Integer> userId, @RequestParam Optional<String> model, @RequestParam Optional<String> brand){
         return carService.getAllCarsOrfindByUserIdOrBrandOrModel(userId, model, brand);
     }

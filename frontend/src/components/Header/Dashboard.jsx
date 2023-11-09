@@ -11,16 +11,11 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-
 import Link from "@mui/material/Link";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-
 import { useNavigate } from "react-router-dom";
-
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -265,18 +260,15 @@ export default function Dashboard() {
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
             flexGrow: 1,
+            marginLeft: "239px",
             height: "100vh",
+            marginTop: "-175px",
             overflow: "auto",
           }}
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12}></Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}></Grid>
-              {/* Recent Orders */}
               <Grid item xs={12}></Grid>
             </Grid>
           </Container>

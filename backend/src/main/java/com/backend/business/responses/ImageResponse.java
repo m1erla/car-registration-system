@@ -11,17 +11,17 @@ public class ImageResponse {
     private int carId;
     private String carName;
     private String model;
-    private String licensePlate;
+    private String plate;
     private String brand;
-    private String modelYear;
+    private String year;
 
     public ImageResponse(ImageCar entity){
         this.id= entity.getId();
         this.carName=entity.getCar().getCarName();
         this.brand=entity.getCar().getBrand();
         this.model=entity.getCar().getModel();
-        this.modelYear=entity.getCar().getModelYear();
-        this.licensePlate=entity.getCar().getLicensePlate();
+        this.year=entity.getCar().getYear();
+        this.plate=entity.getCar().getPlate();
         this.url = entity.getUrl();
         this.carId = entity.getCar().getId();
     }

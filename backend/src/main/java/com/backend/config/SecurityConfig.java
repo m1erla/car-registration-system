@@ -78,7 +78,7 @@ public class SecurityConfig {
                 .permitAll()
                 .antMatchers("/auth/**")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/images")
+                .antMatchers(HttpMethod.GET,"/images/**")
                 .permitAll()
                 .anyRequest().authenticated();
 

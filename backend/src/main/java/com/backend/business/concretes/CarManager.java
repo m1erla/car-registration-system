@@ -111,8 +111,8 @@ public class CarManager implements CarService {
 
         Car toSaveCar=new Car();
         toSaveCar.setCarName(createCarRequest.getCarName());
-        toSaveCar.setLicensePlate(turkishToEnglishConverter(createCarRequest.getLicensePlate()).toUpperCase());
-        toSaveCar.setModelYear(createCarRequest.getModelYear());
+        toSaveCar.setPlate(turkishToEnglishConverter(createCarRequest.getPlate()).toUpperCase());
+        toSaveCar.setYear(createCarRequest.getYear());
         toSaveCar.setBrand(createCarRequest.getBrand());
         toSaveCar.setModel(createCarRequest.getModel());
         toSaveCar.setUser(haveIsUser);
@@ -129,9 +129,9 @@ public class CarManager implements CarService {
             Car toUpdateCar=haveIsCar.get();
             toUpdateCar.setCarName(updateCarRequest.getCarName());
             toUpdateCar.setBrand(updateCarRequest.getBrand());
-            toUpdateCar.setLicensePlate(turkishToEnglishConverter(updateCarRequest.getLicensePlate()).toUpperCase());
+            toUpdateCar.setPlate(turkishToEnglishConverter(updateCarRequest.getPlate()).toUpperCase());
             toUpdateCar.setModel(updateCarRequest.getModel());
-            toUpdateCar.setModelYear(updateCarRequest.getModelYear());
+            toUpdateCar.setYear(updateCarRequest.getYear());
             carRepository.save(toUpdateCar);
             return new SuccessDataResult<Car>("Car updated",toUpdateCar);
         }
@@ -150,6 +150,9 @@ public class CarManager implements CarService {
 
     public  String turkishToEnglishConverter(String text)
     {
+        if (text == null) {
+            return null;
+        }
         char[] turkishChars = {'ı', 'ğ', 'İ', 'Ğ', 'ç', 'Ç', 'ş', 'Ş', 'ö', 'Ö', 'ü', 'Ü'};
         char[] englishChars = {'i', 'g', 'I', 'G', 'c', 'C', 's', 'S', 'o', 'O', 'u', 'U'};
 

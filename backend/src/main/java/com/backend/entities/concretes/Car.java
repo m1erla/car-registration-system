@@ -29,11 +29,11 @@ public class Car {
 
     @Column(name = "model")
     private String model;
-    @Column(name = "model_year")
-    private String modelYear;
+    @Column(name = "year")
+    private String year;
 
-    @Column(name = "license_plate")
-    private String licensePlate;
+    @Column(name = "plate")
+    private String plate;
 
     @Temporal(TemporalType.TIMESTAMP)
     Date createdAt;

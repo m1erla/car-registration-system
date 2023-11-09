@@ -47,12 +47,12 @@ export const validationAddCar = yup.object().shape({
     .required("Must be filled"),
   brand: yup.string().required("Must be filled"),
   model: yup.string(),
-  modelYear: yup
+  year: yup
     .string()
     .min(4, "Model Year must be a minimum of 4 characters")
     .max(4, "")
     .required("Must be filled"),
-  licensePlate: yup
+  plate: yup
     .string()
     .min(8, "License plate must be a minimum of 8 characters")
     .required("Must be filled"),

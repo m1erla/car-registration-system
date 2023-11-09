@@ -6,7 +6,6 @@ import com.backend.business.requests.LoginUser;
 import com.backend.business.responses.AuthResponse;
 import com.backend.entities.concretes.User;
 import com.backend.security.JwtTokenProvider;
-import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

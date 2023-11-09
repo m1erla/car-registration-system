@@ -8,8 +8,8 @@ public class CreateCarRequest {
     private String carName;
     private String brand;
     private String model;
-    private String modelYear;
-    private String licensePlate;
+    private String year;
+    private String plate;
 
     private int userId;
     private String url;

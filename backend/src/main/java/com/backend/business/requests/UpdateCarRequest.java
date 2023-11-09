@@ -10,7 +10,7 @@ public class UpdateCarRequest {
 
     private String model;
 
-    private String modelYear;
+    private String year;
 
-    private String licensePlate;
+    private String plate;
 }
