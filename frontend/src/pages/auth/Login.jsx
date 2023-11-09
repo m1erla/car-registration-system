@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Box, Button } from "@chakra-ui/react";
 import { Container, Grid, InputLabel } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Input, Space } from "antd";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -15,23 +15,38 @@ import { loginAuth } from "../../api";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const loginStatus = useSelector((state) => state.user.loginStatus);
+  const loginError = useSelector((state) => state.user.loginError);
 
   const formik = useFormik({
     initialValues: {
       userName: "",
       password: "",
     },
+    onSubmit: async (values) => {
+      await dispatch(loginAuth(values));
+    },
     validationSchema: validationLogin,
 
-    onSubmit: async (values, bag) => {
-      await dispatch(
-        loginAuth({ userName: values.userName, password: values.password })
-      );
-      formik.values.userName = "";
-      formik.values.password = "";
-      setTimeout(() => navigate(0), 5000);
-    },
+    // onSubmit: async (values, bag) => {
+    //   await dispatch(
+    //     loginAuth({ userName: values.userName, password: values.password })
+    //   );
+    //   formik.values.userName = "";
+    //   formik.values.password = "";
+    //   setTimeout(() => navigate(0), 5000);
+    // },
   });
+
+  useEffect(() => {
+    if (loginStatus === "success") {
+      setTimeout(() => {
+        formik.resetForm();
+        navigate("/");
+      }, 5000);
+    }
+  }, [loginStatus, formik, navigate]);
+
   const defaultTheme = createTheme();
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -103,6 +118,7 @@ const Login = () => {
 
                   <section style={{ width: "650px" }}>
                     <form
+                      onSubmit={formik.handleSubmit}
                       style={{
                         display: "flex",
                         flexDirection: "column",

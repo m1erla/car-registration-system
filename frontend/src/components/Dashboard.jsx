@@ -5,11 +5,7 @@ import { IconButton } from "@mui/material";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Home } from "@mui/icons-material";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import { HiOutlineLogout } from "react-icons/hi";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
@@ -24,6 +20,11 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import LogoutIcon from "@mui/icons-material/Logout";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import AddIcon from "@mui/icons-material/Add";
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -90,7 +91,7 @@ const Dashboard = () => {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar");
+    navigate("/editCar/:carId");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -170,7 +171,7 @@ const Dashboard = () => {
               <>
                 <ListItemButton>
                   <ListItemIcon>
-                    <LayersIcon />
+                    <ManageAccountsIcon />
                   </ListItemIcon>
                   <Link onClick={handleChangePassword} to="/changepassword">
                     <ListItemText primary="Change Password" />
@@ -178,7 +179,7 @@ const Dashboard = () => {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <BarChartIcon />
+                    <EditNoteIcon />
                   </ListItemIcon>
                   <Link onClick={handleEditCar} to="/editCar/:carId">
                     <ListItemText primary="Edit Car" />
@@ -186,7 +187,7 @@ const Dashboard = () => {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <FormatListBulletedIcon />
                   </ListItemIcon>
                   <Link onClick={handleCarDetail} to="/cardetail/:carId">
                     <ListItemText primary="Car List" />
@@ -194,7 +195,7 @@ const Dashboard = () => {
                 </ListItemButton>
                 <ListItemButton>
                   <ListItemIcon>
-                    <AssignmentIcon />
+                    <AddIcon />
                   </ListItemIcon>
                   <Link onClick={handleAddNewCar} to="/addnewcar">
                     <ListItemText primary="Add a New Car" />
@@ -203,7 +204,7 @@ const Dashboard = () => {
                 <ListItemButton>
                   <ListItemIcon>
                     <IconButton onClick={() => logout()}>
-                      <HiOutlineLogout />
+                      <LogoutIcon sx={{ ml: -0.5 }} />
                     </IconButton>
                   </ListItemIcon>
                   <ListItemText primary="Logout" />

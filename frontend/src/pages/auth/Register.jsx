@@ -18,10 +18,8 @@ import Grid from "@mui/material/Grid";
 
 const Register = () => {
   const registerInfo = useSelector((state) => state.user.registerUser);
-
-  useEffect(() => {}, [registerInfo]);
-  console.log(registerInfo);
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       userName: "",
@@ -31,18 +29,16 @@ const Register = () => {
     validationSchema: validationRegister,
 
     onSubmit: async (values, bag) => {
-      await dispatch(
-        axiosRegister({
-          userName: values.userName,
-          password: values.password,
-        })
-      );
-
-      formik.values.userName = "";
-      formik.values.password = "";
-      formik.values.passwordConfirm = "";
+      await dispatch(axiosRegister({ values }));
     },
   });
+
+  useEffect(() => {
+    if (registerInfo) {
+      formik.resetForm();
+    }
+  }, [registerInfo, formik]);
+
   const defaultTheme = createTheme();
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -118,6 +114,7 @@ const Register = () => {
 
                     <section style={{ width: "650px" }}>
                       <form
+                        onSubmit={formik.handleSubmit}
                         style={{
                           display: "flex",
                           flexDirection: "column",
