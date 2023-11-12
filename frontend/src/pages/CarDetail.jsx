@@ -44,24 +44,20 @@ const CarDetail = () => {
   };
 
   useEffect(() => {
-    getOneCar();
-    if (imageCarIdStatus === "idle") {
-      get();
-    }
+    getCarAndImage();
   }, [carId, imageCarIdStatus, imagesCarId]);
 
-  const getOneCar = async () => {
+  const getCarAndImage = async () => {
     await dispatch(getCarById(carId));
-  };
-
-  const get = async () => {
-    await dispatch(axiosGetImage(carId));
+    if (imageCarIdStatus === "idle") {
+      dispatch(axiosGetImage(carId));
+    }
   };
 
   const images =
     imagesCarId.length > 0
       ? imagesCarId[0].map((url) => ({ original: url.url }))
-      : [];
+      : [{ original: Defaultcar }];
 
   // TODO remove, this demo shouldn't need to reset the theme.
   const defaultTheme = createTheme();
@@ -78,7 +74,7 @@ const CarDetail = () => {
           flexGrow: 1,
           marginLeft: "239px",
           height: "100vh",
-          marginTop: "-175px",
+          marginTop: "-325px",
           overflow: "auto",
         }}
       >

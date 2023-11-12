@@ -40,13 +40,16 @@ axios.interceptors.response.use(
   }
 );
 
-export const getAllCars = createAsyncThunk("cars/getAllCars", async () => {
-  const data = await axiosIstance.get(`/cars`);
-  return data.data.data;
-});
+export const getAllCars = createAsyncThunk(
+  "getAllCars/getAllCars",
+  async () => {
+    const data = await axiosIstance.get(`/cars`);
+    return data.data.data;
+  }
+);
 
 export const getAllByBrand = createAsyncThunk(
-  "cars/getAllByBrand",
+  "GetAllByBrand/getAllByBrand",
   async (brand) => {
     const data = await axiosIstance.get(`/cars?brand=${brand}`);
     return data.data.data;
@@ -54,7 +57,7 @@ export const getAllByBrand = createAsyncThunk(
 );
 
 export const getAllByModel = createAsyncThunk(
-  "cars/getAllByModel",
+  "getAllByModel/getAllByModel",
   async (model) => {
     const data = await axiosIstance.get(`/cars?model=${model}`);
     return data.data.data;
@@ -62,7 +65,7 @@ export const getAllByModel = createAsyncThunk(
 );
 
 export const getAllByBrandAndModel = createAsyncThunk(
-  "cars/getAllByBrandAndModel",
+  "GetAllByBrandAndModel/getAllByBrandAndModel",
   async (brandAndModel) => {
     const data = await axiosIstance.get(
       `/cars?brand=${brandAndModel.brand}&model=${brandAndModel.model}`
@@ -72,7 +75,7 @@ export const getAllByBrandAndModel = createAsyncThunk(
 );
 
 export const getCarById = createAsyncThunk(
-  "cars/getByCarIdCars",
+  "getCarById/getByCarIdCars",
   async (carsId) => {
     const data = await axiosIstance.get(`/cars/${carsId}`, {
       headers: {
@@ -93,7 +96,7 @@ export const axiosCarById = async (carsId) => {
 };
 
 export const getCarByUserId = createAsyncThunk(
-  "cars/getCarByUserId",
+  "getCarByUserId/getCarByUserId",
   async (userId) => {
     const data = await axiosIstance.get(`/cars?userId=${userId}`, {
       headers: {
@@ -104,7 +107,7 @@ export const getCarByUserId = createAsyncThunk(
   }
 );
 
-export const addCar = createAsyncThunk("cars/addCar", async (car) => {
+export const addCar = createAsyncThunk("addCar/addCar", async (car) => {
   const data = await axiosIstance.post(`/cars`, car, {
     headers: {
       Authorization: localStorage.getItem("token"),
@@ -113,33 +116,39 @@ export const addCar = createAsyncThunk("cars/addCar", async (car) => {
   return data.data.data;
 });
 
-export const deleteCar = createAsyncThunk("cars/deleteCar", async (carId) => {
-  const data = await axiosIstance.delete(`/cars/${carId}`, {
-    headers: {
-      Authorization: localStorage.getItem("token"),
-    },
-  });
-  return data.data.data;
-});
+export const deleteCar = createAsyncThunk(
+  "deleteCar/deleteCar",
+  async (carId) => {
+    const data = await axiosIstance.delete(`/cars/${carId}`, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+    return data.data.data;
+  }
+);
 
-export const updateCar = createAsyncThunk("cars/updateCar", async (update) => {
-  const updateObj = {
-    carName: update.carName,
-    model: update.model,
-    brand: update.brand,
-    year: update.year,
-    lisencePlate: update.plate,
-  };
-  const data = await axiosIstance.put(`/cars/${update.id}`, updateObj, {
-    headers: {
-      Authorization: localStorage.getItem("token"),
-    },
-  });
-  return data.data.data;
-});
+export const updateCar = createAsyncThunk(
+  "updateCar/updateCar",
+  async (update) => {
+    const updateObj = {
+      carName: update.carName,
+      model: update.model,
+      brand: update.brand,
+      year: update.year,
+      lisencePlate: update.plate,
+    };
+    const data = await axiosIstance.put(`/cars/${update.id}`, updateObj, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+    return data.data.data;
+  }
+);
 
 export const axiosRegister = createAsyncThunk(
-  "auth/axiosRegister",
+  "userRegister/axiosRegister",
   async (register, { rejectWithValue }) => {
     try {
       const data = await axiosIstance.post(`/auth/register`, register);
@@ -151,20 +160,23 @@ export const axiosRegister = createAsyncThunk(
   }
 );
 
-export const loginAuth = createAsyncThunk("auth/loginAuth", async (login) => {
-  try {
-    const data = await axiosIstance.post(`/auth/login`, login);
+export const loginAuth = createAsyncThunk(
+  "userLogin/loginAuth",
+  async (login) => {
+    try {
+      const data = await axiosIstance.post(`/auth/login`, login);
 
-    console.log("Login response: ", data);
-    localStorage.setItem("token", data.data.message);
-    localStorage.setItem("currentUserId", data.data.userId);
-    localStorage.setItem("currentUserName", data.data.userName);
-    return data.data;
-  } catch (error) {
-    console.error("Login failed", error);
-    throw error;
+      console.log("Login response: ", data);
+      localStorage.setItem("token", data.data.message);
+      localStorage.setItem("currentUserId", data.data.userId);
+      localStorage.setItem("currentUserName", data.data.userName);
+      return data.data;
+    } catch (error) {
+      console.error("Login failed", error);
+      throw error;
+    }
   }
-});
+);
 
 export const axiosLogout = async (input) => {
   const data = await axiosIstance.post(`/auth/logout`, input, {
@@ -174,7 +186,7 @@ export const axiosLogout = async (input) => {
 };
 
 export const axiosGetImage = createAsyncThunk(
-  "cars/axiosGetImage",
+  "axiosGetImage/axiosGetImage",
   async (carId) => {
     const data = await axiosIstance.get(`/images?carId=${carId}`, {
       headers: {
@@ -186,7 +198,7 @@ export const axiosGetImage = createAsyncThunk(
 );
 
 export const addImage = createAsyncThunk(
-  "cars/axiosGetImage",
+  "addImage/axiosGetImage",
   async (image) => {
     const data = await axiosIstance.post(`/images`, image, {
       headers: {
@@ -198,7 +210,7 @@ export const addImage = createAsyncThunk(
 );
 
 export const changePassword = createAsyncThunk(
-  "cars/changePassword",
+  "changePassword/changePassword",
   async (newPassword) => {
     const data = await axiosIstance.put(
       `/users/${parseInt(localStorage.getItem("currentUserId"))}`,

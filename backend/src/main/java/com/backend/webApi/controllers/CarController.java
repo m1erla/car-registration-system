@@ -28,8 +28,8 @@ public class CarController {
 
 
     @GetMapping("/{carId}")
-    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable int carId){
-            return carService.getOneCarsByIdApi(carId);
+    public DataResult<GetAllCarsResponse> getOneCarsById(@PathVariable String carId){
+            return carService.getOneCarsByIdApi(Integer.parseInt(carId));
     }
 
     @PostMapping
@@ -37,7 +37,7 @@ public class CarController {
         return carService.createOneCar(createCarRequest);
     }
 
-    @PutMapping("/{carId}")
+    @PutMapping("/editCar/{carId}")
     public DataResult<Car> updateOneCar(@PathVariable int carId,@RequestBody UpdateCarRequest UpdateCarRequest){
         return carService.updateOneCar(carId,UpdateCarRequest);
     }

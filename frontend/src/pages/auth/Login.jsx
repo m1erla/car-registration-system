@@ -23,19 +23,16 @@ const Login = () => {
       userName: "",
       password: "",
     },
-    onSubmit: async (values) => {
-      await dispatch(loginAuth(values));
-    },
     validationSchema: validationLogin,
 
-    // onSubmit: async (values, bag) => {
-    //   await dispatch(
-    //     loginAuth({ userName: values.userName, password: values.password })
-    //   );
-    //   formik.values.userName = "";
-    //   formik.values.password = "";
-    //   setTimeout(() => navigate(0), 5000);
-    // },
+    onSubmit: async (values, bag) => {
+      await dispatch(
+        loginAuth({ userName: values.userName, password: values.password })
+      );
+      formik.values.userName = "";
+      formik.values.password = "";
+      setTimeout(() => navigate(0), 5000);
+    },
   });
 
   useEffect(() => {

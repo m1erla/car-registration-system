@@ -29,7 +29,17 @@ const Register = () => {
     validationSchema: validationRegister,
 
     onSubmit: async (values, bag) => {
-      await dispatch(axiosRegister({ values }));
+      await dispatch(
+        axiosRegister({
+          userName: values.userName,
+          password: values.password,
+          passwordConfirm: values.passwordConfirm,
+        })
+      );
+
+      formik.values.userName = "";
+      formik.values.password = "";
+      formik.values.passwordConfirm = "";
     },
   });
 
