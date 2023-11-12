@@ -95,7 +95,7 @@ const AddNewCar = () => {
           flexGrow: 1,
           marginLeft: "239px",
           height: "100vh",
-          marginTop: "-175px",
+          marginTop: "-325px",
           overflow: "auto",
         }}
       >
@@ -109,6 +109,7 @@ const AddNewCar = () => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
+                  margintop: "10px",
                   marginBottom: "200px",
                 }}
               >

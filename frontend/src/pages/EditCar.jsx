@@ -101,7 +101,7 @@ const EditCar = () => {
           flexGrow: 1,
           marginLeft: "239px",
           height: "100vh",
-          marginTop: "-175px",
+          marginTop: "-325px",
           overflow: "auto",
         }}
       >

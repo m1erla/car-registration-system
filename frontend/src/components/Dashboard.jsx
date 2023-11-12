@@ -91,7 +91,7 @@ const Dashboard = () => {
   };
 
   const handleEditCar = () => {
-    navigate("/editCar/:carId");
+    navigate("/editCar/1");
     navigate(0);
   };
   const handleAddNewCar = () => {
@@ -99,7 +99,7 @@ const Dashboard = () => {
     navigate(0);
   };
   const handleCarDetail = () => {
-    navigate("/cardetail");
+    navigate("/cardetail/1");
     navigate(0);
   };
 
@@ -181,7 +181,7 @@ const Dashboard = () => {
                   <ListItemIcon>
                     <EditNoteIcon />
                   </ListItemIcon>
-                  <Link onClick={handleEditCar} to="/editCar/:carId">
+                  <Link onClick={handleEditCar} to="/editCar/1">
                     <ListItemText primary="Edit Car" />
                   </Link>
                 </ListItemButton>
@@ -189,7 +189,7 @@ const Dashboard = () => {
                   <ListItemIcon>
                     <FormatListBulletedIcon />
                   </ListItemIcon>
-                  <Link onClick={handleCarDetail} to="/cardetail/:carId">
+                  <Link onClick={handleCarDetail} to="/cardetail/1">
                     <ListItemText primary="Car List" />
                   </Link>
                 </ListItemButton>

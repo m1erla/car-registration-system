@@ -179,7 +179,7 @@ const Car = ({ car }) => {
           </section>
           <section>
             <div>
-              <IconButton onClick={showModelEdit}>
+              <IconButton onClick={showEditCarModal}>
                 <MdModeEditOutline />
               </IconButton>
               <IconButton onClick={showDeleteConfirm}>
